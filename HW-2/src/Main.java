@@ -1,15 +1,17 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+/**
+ * Главный класс с методом main для примера использования Pair и GenericMethods.
+ */
 public class Main {
+    /**
+     * Точка входа в программу.
+     * @param args Аргументы командной строки (не используются).
+     */
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        // Пример использования
+        Pair<Integer> intPair = new Pair<>(2, 3);
+        System.out.println("Sum: " + GenericMethods.sum(intPair));
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+        Pair<String> stringPair = new Pair<>("Hello, ", "world!");
+        System.out.println("Concatenation: " + GenericMethods.concatenate(stringPair));
     }
 }
