@@ -12,22 +12,16 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         // Введите два числа
-        System.out.print("Введите первое число: ");
-        int firstNumber = scanner.nextInt();
-
-        System.out.print("Введите второе число: ");
-        int secondNumber = scanner.nextInt();
+        int firstNumber = readIntegerInput("Введите первое число: ", scanner);
+        int secondNumber = readIntegerInput("Введите второе число: ", scanner);
 
         // Создайте пару чисел
         Pair<Integer> intPair = new Pair<>(firstNumber, secondNumber);
         System.out.println("Сумма чисел: " + GenericMethods.sum(intPair));
 
         // Введите две строки
-        System.out.print("Введите первую строку: ");
-        String firstString = scanner.next();
-
-        System.out.print("Введите вторую строку: ");
-        String secondString = scanner.next();
+        String firstString = readStringInput("Введите первую строку: ", scanner);
+        String secondString = readStringInput("Введите вторую строку: ", scanner);
 
         // Создайте пару строк
         Pair<String> stringPair = new Pair<>(firstString, secondString);
@@ -35,5 +29,40 @@ public class Main {
 
         // Закрыть Scanner
         scanner.close();
+    }
+
+    /**
+     * Метод для чтения целочисленного ввода с проверкой на корректность.
+     * @param prompt Подсказка для пользователя.
+     * @param scanner Объект Scanner для ввода данных.
+     * @return Введенное целое число.
+     */
+    private static int readIntegerInput(String prompt, Scanner scanner) {
+        int input = 0;
+        boolean isValidInput = false;
+
+        while (!isValidInput) {
+            try {
+                System.out.print(prompt);
+                input = scanner.nextInt();
+                isValidInput = true;
+            } catch (Exception e) {
+                System.out.println("Ошибка: Введите корректное целое число.");
+                scanner.nextLine(); // Очистить буфер ввода
+            }
+        }
+
+        return input;
+    }
+
+    /**
+     * Метод для чтения строкового ввода.
+     * @param prompt Подсказка для пользователя.
+     * @param scanner Объект Scanner для ввода данных.
+     * @return Введенная строка.
+     */
+    private static String readStringInput(String prompt, Scanner scanner) {
+        System.out.print(prompt);
+        return scanner.next();
     }
 }
