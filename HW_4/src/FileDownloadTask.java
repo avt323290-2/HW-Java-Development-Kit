@@ -61,7 +61,7 @@ public class FileDownloadTask implements Runnable {
                 }
             }
         } else {
-            throw new IOException("Failed to download file. HTTP status code: " + responseCode);
+            throw new IOException("Не удалось загрузить файл. HTTP-статус: " + responseCode);
         }
 
         connection.disconnect();

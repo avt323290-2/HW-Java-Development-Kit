@@ -4,8 +4,16 @@ import java.util.Scanner;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+/**
+ * Программа для загрузки файлов из интернета в несколько потоков.
+ */
 public class FileDownloader {
 
+    /**
+     * Точка входа в программу.
+     *
+     * @param args Аргументы командной строки (не используются).
+     */
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
@@ -30,6 +38,13 @@ public class FileDownloader {
         scanner.close();
     }
 
+    /**
+     * Загружает файлы из указанных URL-адресов с использованием нескольких потоков.
+     *
+     * @param fileUrls     Список URL-адресов файлов для загрузки.
+     * @param numThreads   Количество потоков для параллельной загрузки.
+     * @param downloadPath Путь для сохранения загруженных файлов.
+     */
     private static void downloadFiles(List<String> fileUrls, int numThreads, String downloadPath) {
         ExecutorService executor = Executors.newFixedThreadPool(numThreads);
 
