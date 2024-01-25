@@ -4,24 +4,38 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
+/**
+ * Класс для демонстрации парадокса Монти Холла.
+ */
 public class MontyHallParadox {
+
+    /**
+     * Точка входа в приложение.
+     *
+     * @param args Аргументы командной строки (не используются).
+     */
     public static void main(String[] args) {
         int totalTests = 1000;
         Map<Integer, String> results = new HashMap<>();
 
         for (int i = 1; i <= totalTests; i++) {
             boolean result = playMontyHallGame();
-            results.put(i, result ? "Win" : "Lose");
+            results.put(i, result ? "Победа" : "Поражение");
         }
 
         // Вывод статистики
-        int wins = (int) results.values().stream().filter(result -> result.equals("Win")).count();
+        int wins = (int) results.values().stream().filter(result -> result.equals("Победа")).count();
         int losses = totalTests - wins;
 
-        System.out.println("Wins: " + wins);
-        System.out.println("Losses: " + losses);
+        System.out.println("Победы: " + wins);
+        System.out.println("Поражения: " + losses);
     }
 
+    /**
+     * Метод, реализующий сценарий игры Монти Холла.
+     *
+     * @return true, если игрок выиграл, false в противном случае.
+     */
     private static boolean playMontyHallGame() {
         Random random = new Random();
 
